@@ -35,13 +35,13 @@ The model (~130MB) is downloaded automatically on first use, but you can cache i
 ./bin/download-model.sh
 ```
 
-### 4. Get the Qdrant Cloud API key
+### 4. Configure your Qdrant instance
 
-Ask Joe for the `QDRANT_API_KEY`. Add it to your shell profile (`~/.zshrc` or `~/.bashrc`):
+Set your Qdrant API key in your shell profile (`~/.zshrc` or `~/.bashrc`):
 
 ```bash
 # Qdrant Cloud (Heliograph)
-export QDRANT_API_KEY=<api-key-from-joe>
+export QDRANT_API_KEY=<your-qdrant-api-key>
 ```
 
 Then reload your shell: `source ~/.zshrc`
@@ -56,7 +56,7 @@ Add the following to `.mcp.json` in any repo where you want Heliograph available
     "heliograph": {
       "command": "heliograph",
       "env": {
-        "QDRANT_URL": "https://0c51095f-01c7-4b52-9a2f-74a5df98d877.us-east-1-1.aws.cloud.qdrant.io:6333"
+        "QDRANT_URL": "https://your-cluster.cloud.qdrant.io:6333"
       }
     }
   }
