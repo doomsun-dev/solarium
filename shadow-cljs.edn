@@ -1,0 +1,10 @@
+{:deps true
+ :builds
+ {:server {:target           :node-script
+           :output-to        "out/server.js"
+           :output-dir       "out"
+           :main             ds.heliograph.main/main!
+           :compiler-options {:optimizations :simple}}
+  :test   {:target    :node-test
+           :output-to "out/tests.js"
+           :ns-regexp "-test$"}}}
