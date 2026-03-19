@@ -18,11 +18,14 @@ cd heliograph
 npm install
 ```
 
-### 2. Build the server
+### 2. Build and link
 
 ```bash
 npm run build
+npm link
 ```
+
+This builds the server and creates a global `heliograph` command on your PATH.
 
 ### 3. Pre-download the embedding model (optional but recommended)
 
@@ -51,8 +54,7 @@ Add the following to `.mcp.json` in any repo where you want Heliograph available
 {
   "mcpServers": {
     "heliograph": {
-      "command": "node",
-      "args": ["/path/to/heliograph/out/server.js"],
+      "command": "heliograph",
       "env": {
         "QDRANT_URL": "https://0c51095f-01c7-4b52-9a2f-74a5df98d877.us-east-1-1.aws.cloud.qdrant.io:6333"
       }
@@ -61,7 +63,7 @@ Add the following to `.mcp.json` in any repo where you want Heliograph available
 }
 ```
 
-Update the path in `args` to wherever you cloned this repo. `QDRANT_API_KEY` is read from your shell environment automatically.
+`QDRANT_API_KEY` is read from your shell environment automatically.
 
 ### 6. Verify
 
