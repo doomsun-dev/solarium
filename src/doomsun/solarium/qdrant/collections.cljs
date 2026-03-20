@@ -27,6 +27,13 @@
                     {:field_name "tags"
                      :field_schema "keyword"})))
 
+(defn collection-info
+  "Get detailed collection information including point counts and stats."
+  [config]
+  (p/let [resp (client/request config "GET"
+                               (str "/collections/" (:collection-name config)))]
+    (:result resp)))
+
 (defn ensure-collection!
   "Create the collection and payload indexes if they don't exist."
   [config]

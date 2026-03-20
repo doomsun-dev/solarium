@@ -89,6 +89,30 @@ In Claude Code, run `/mcp` to confirm Solarium is connected, then try:
 | `tag_document` | Add tags to a document |
 | `untag_document` | Remove tags from a document |
 
+## Dashboard
+
+Solarium includes a local web dashboard for browsing documents, searching, and viewing analytics.
+
+### Build and run
+
+```bash
+npm run build:dashboard
+solarium-dashboard
+```
+
+Then open `http://localhost:3333` in your browser.
+
+The dashboard requires the same `QDRANT_URL` and `QDRANT_API_KEY` environment variables as the MCP server. Set `DASHBOARD_PORT` to change the port (default: 3333).
+
+### Views
+
+- **Overview** — collection stats, recent documents, tag cloud
+- **Documents** — paginated list with tag filtering, document detail with chunk visualization
+- **Search** — semantic search with relevance scores
+- **Analytics** — documents over time, tag distribution, chunk size distribution (Vega-Lite charts)
+
+Live updates via SSE — the dashboard polls Qdrant and auto-updates open pages.
+
 ## Configuration
 
 All configuration is via environment variables:
@@ -101,12 +125,19 @@ All configuration is via environment variables:
 | `MODEL_NAME` | `nomic-ai/nomic-embed-text-v1.5` | HuggingFace embedding model |
 | `CHUNK_MAX_CHARS` | `1600` | Max characters per chunk |
 | `CHUNK_OVERLAP` | `200` | Overlap between chunks |
+| `DASHBOARD_PORT` | `3333` | Dashboard HTTP server port |
 
 ## Development
 
 ```bash
-# Watch mode (auto-rebuild on changes)
+# Watch mode — MCP server
 npm run watch
+
+# Watch mode — dashboard
+npm run watch:dashboard
+
+# Watch both
+npm run watch:all
 
 # Run tests
 npm test
