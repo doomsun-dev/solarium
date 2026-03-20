@@ -1,8 +1,8 @@
-# Heliograph
+# Solarium
 
-Shared knowledge base MCP server for the Doomsun team. Backed by [Qdrant](https://qdrant.tech/) vector database with local embeddings ([nomic-embed-text-v1.5](https://huggingface.co/nomic-ai/nomic-embed-text-v1.5) via HuggingFace Transformers + ONNX Runtime).
+A knowledge base MCP server backed by [Qdrant](https://qdrant.tech/) vector database with local embeddings ([nomic-embed-text-v1.5](https://huggingface.co/nomic-ai/nomic-embed-text-v1.5) via HuggingFace Transformers + ONNX Runtime).
 
-Heliograph runs as a local MCP server process — embeddings are computed on your machine, vectors are stored in our shared Qdrant Cloud instance.
+Solarium runs as a local MCP server process — embeddings are computed on your machine, vectors are stored in a Qdrant instance of your choice (local or cloud).
 
 ## Setup
 
@@ -14,7 +14,7 @@ Heliograph runs as a local MCP server process — embeddings are computed on you
 ### 1. Install dependencies
 
 ```bash
-cd heliograph
+cd solarium
 npm install
 ```
 
@@ -25,7 +25,7 @@ npm run build
 npm link
 ```
 
-This builds the server and creates a global `heliograph` command on your PATH.
+This builds the server and creates a global `solarium` command on your PATH.
 
 ### 3. Pre-download the embedding model (optional but recommended)
 
@@ -40,7 +40,7 @@ The model (~130MB) is downloaded automatically on first use, but you can cache i
 Set your Qdrant API key in your shell profile (`~/.zshrc` or `~/.bashrc`):
 
 ```bash
-# Qdrant Cloud (Heliograph)
+# Qdrant Cloud (Solarium)
 export QDRANT_API_KEY=<your-qdrant-api-key>
 ```
 
@@ -48,13 +48,13 @@ Then reload your shell: `source ~/.zshrc`
 
 ### 5. Add to your Claude Code MCP config
 
-Add the following to `.mcp.json` in any repo where you want Heliograph available (it's already configured in `nova`):
+Add the following to `.mcp.json` in any repo where you want Solarium available:
 
 ```json
 {
   "mcpServers": {
-    "heliograph": {
-      "command": "heliograph",
+    "solarium": {
+      "command": "solarium",
       "env": {
         "QDRANT_URL": "https://your-cluster.cloud.qdrant.io:6333"
       }
@@ -67,9 +67,9 @@ Add the following to `.mcp.json` in any repo where you want Heliograph available
 
 ### 6. Verify
 
-In Claude Code, run `/mcp` to confirm Heliograph is connected, then try:
+In Claude Code, run `/mcp` to confirm Solarium is connected, then try:
 
-> Search the knowledge base for "portfolio engine"
+> Search the knowledge base for "deployment architecture"
 
 ## Available Tools
 
