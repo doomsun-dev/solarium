@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="logo.svg" width="128" height="128" alt="Solarium">
+</p>
+
 # Solarium
 
 A knowledge base MCP server backed by [Qdrant](https://qdrant.tech/) vector database with local embeddings ([nomic-embed-text-v1.5](https://huggingface.co/nomic-ai/nomic-embed-text-v1.5) via HuggingFace Transformers + ONNX Runtime).
