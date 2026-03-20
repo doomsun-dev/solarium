@@ -91,7 +91,11 @@ In Claude Code, run `/mcp` to confirm Solarium is connected, then try:
 
 ## Dashboard
 
-Solarium includes a local web dashboard for browsing documents, searching, and viewing analytics.
+Solarium includes a local web dashboard for browsing documents, semantic search, tag management, and analytics.
+
+<p align="center">
+  <img src="screenshot.png" alt="Solarium Dashboard" width="800">
+</p>
 
 ### Build and run
 
@@ -106,12 +110,20 @@ The dashboard requires the same `QDRANT_URL` and `QDRANT_API_KEY` environment va
 
 ### Views
 
-- **Overview** — collection stats, recent documents, tag cloud
-- **Documents** — paginated list with tag filtering, document detail with chunk visualization
-- **Search** — semantic search with relevance scores
-- **Analytics** — documents over time, tag distribution, chunk size distribution (Vega-Lite charts)
+- **Overview** — collection stats (document/vector/point counts), recent documents, tag cloud
+- **Documents** — paginated document list with tag filtering, full document detail with rendered markdown and chunk visualization, inline tag management (add/remove)
+- **Search** — semantic search with relevance scores, snippets, and tag filtering
+- **Analytics** — documents over time, tag distribution, chunk size distribution (Vega-Lite charts), collection stats
 
-Live updates via SSE — the dashboard polls Qdrant and auto-updates open pages.
+### Architecture
+
+The dashboard runs as a separate process from the MCP server (which uses stdio). Both share the same source code — Qdrant client, tools, config, and embedding pipeline.
+
+- **Server-driven rendering** — HTML is rendered on the server from ClojureScript hiccup, streamed to the browser
+- **SSE + Idiomorph** — live updates via Server-Sent Events with DOM morphing (polls Qdrant every 60s)
+- **Tailwind CSS** + `@tailwindcss/typography` — styling with the `prose` class for markdown content
+- **Vega-Lite** — interactive charts, lazy-loaded from CDN only on the analytics page
+- **No frontend framework** — no React, no client-side state management; ~30 lines of client JS for SSE wiring
 
 ## Configuration
 
