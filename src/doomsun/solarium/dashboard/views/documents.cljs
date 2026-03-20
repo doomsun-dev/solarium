@@ -123,15 +123,7 @@
                        [:input {:type "text" :name "tag" :placeholder "Add tag..."}]
                        [:button {:type "submit"} "Add"]]]
                      [:div {:class "prose max-w-none mt-8"}
-                      (html/raw (marked full-content))]
-                     [:div {:class "chunks"}
-                      [:h2 (str "Chunks (" (count chunks) ")")]
-                      (for [{:keys [content chunk_index]} chunks]
-                        [:div {:class "chunk"}
-                         [:div {:class "chunk-header"}
-                          [:span (str "Chunk " chunk_index)]
-                          [:span (str (count content) " chars")]]
-                         [:pre {:class "chunk-content"} content]])])))))
+                      (html/raw (marked full-content))])))))
 
 (defn handle-tag-action [config doc-id action tag]
   (case action

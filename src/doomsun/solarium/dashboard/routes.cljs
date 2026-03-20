@@ -7,6 +7,7 @@
             [doomsun.solarium.dashboard.views.documents :as documents]
             [doomsun.solarium.dashboard.views.search :as search]
             [doomsun.solarium.dashboard.views.analytics :as analytics]
+            [doomsun.solarium.dashboard.views.random :as random]
             [doomsun.solarium.dashboard.sse :as sse]
             [promesa.core :as p]))
 
@@ -35,6 +36,9 @@
 
       (= pathname "/sse/documents")
       (sse/handle-documents config res)
+
+      (= pathname "/sse/random")
+      (sse/handle-random config res)
 
       ;; Overview
       (or (= pathname "/") (= pathname ""))
@@ -80,6 +84,11 @@
       ;; Analytics
       (= pathname "/analytics")
       (p/let [page-html (analytics/page config)]
+        (http/respond-html res 200 (html/render page-html)))
+
+      ;; Random
+      (= pathname "/random")
+      (p/let [page-html (random/page config)]
         (http/respond-html res 200 (html/render page-html)))
 
       ;; 404

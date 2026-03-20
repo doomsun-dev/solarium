@@ -2,6 +2,7 @@
   (:require [doomsun.solarium.dashboard.http :as http]
             [doomsun.solarium.dashboard.html :as html]
             [doomsun.solarium.dashboard.views.overview :as overview]
+            [doomsun.solarium.dashboard.views.random :as random]
             [doomsun.solarium.util :as util]
             [promesa.core :as p]))
 
@@ -29,9 +30,13 @@
 (defn handle-documents [config res]
   (add-client! :documents res))
 
+(defn handle-random [config res]
+  (add-client! :random res))
+
 (defn start-polling!
-  "Poll Qdrant every 60s and broadcast updates to SSE clients."
+  "Start all SSE polling intervals."
   [config]
+  ;; Overview stats — every 60s
   (js/setInterval
    (fn []
      (when (seq (get @clients :overview))
@@ -39,4 +44,14 @@
              (broadcast! :overview "morph" (html/render fragment)))
            (p/catch (fn [err]
                       (util/log "SSE poll error:" (.-message err)))))))
-   60000))
+   60000)
+  ;; Random document — every 10s
+  (js/setInterval
+   (fn []
+     (when (seq (get @clients :random))
+       (-> (p/let [fragment (random/random-doc-fragment config)]
+             (when fragment
+               (broadcast! :random "morph" (html/render fragment))))
+           (p/catch (fn [err]
+                      (util/log "SSE random error:" (.-message err)))))))
+   10000))

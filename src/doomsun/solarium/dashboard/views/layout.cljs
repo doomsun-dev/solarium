@@ -4,7 +4,8 @@
   [{:path "/" :label "Overview" :key :overview}
    {:path "/documents" :label "Documents" :key :documents}
    {:path "/search" :label "Search" :key :search}
-   {:path "/analytics" :label "Analytics" :key :analytics}])
+   {:path "/analytics" :label "Analytics" :key :analytics}
+   {:path "/random" :label "Random" :key :random}])
 
 (defn page [{:keys [title active-nav]} & body]
   [:html {:lang "en"}
