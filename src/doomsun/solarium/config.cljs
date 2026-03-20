@@ -1,4 +1,4 @@
-(ns ds.heliograph.config)
+(ns doomsun.solarium.config)
 
 (defn load-config []
   (let [env js/process.env]

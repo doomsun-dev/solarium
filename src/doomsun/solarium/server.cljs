@@ -1,10 +1,10 @@
-(ns ds.heliograph.server
+(ns doomsun.solarium.server
   (:require ["@modelcontextprotocol/sdk/server/mcp.js" :refer [McpServer]]
             ["zod" :refer [z]]
-            [ds.heliograph.tools.documents :as docs]
-            [ds.heliograph.tools.search :as search]
-            [ds.heliograph.tools.tags :as tags]
-            [ds.heliograph.util :as util]
+            [doomsun.solarium.tools.documents :as docs]
+            [doomsun.solarium.tools.search :as search]
+            [doomsun.solarium.tools.tags :as tags]
+            [doomsun.solarium.util :as util]
             [promesa.core :as p]))
 
 (defn- wrap-handler

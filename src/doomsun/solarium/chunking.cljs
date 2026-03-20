@@ -1,4 +1,4 @@
-(ns ds.heliograph.chunking
+(ns doomsun.solarium.chunking
   (:require [clojure.string :as str]))
 
 (defn- split-sentences

@@ -1,7 +1,7 @@
-(ns ds.heliograph.tools.search
-  (:require [ds.heliograph.qdrant.points :as points]
-            [ds.heliograph.embedding.pipeline :as embed]
-            [ds.heliograph.chunking :as chunking]
+(ns doomsun.solarium.tools.search
+  (:require [doomsun.solarium.qdrant.points :as points]
+            [doomsun.solarium.embedding.pipeline :as embed]
+            [doomsun.solarium.chunking :as chunking]
             [promesa.core :as p]))
 
 (defn search-documents

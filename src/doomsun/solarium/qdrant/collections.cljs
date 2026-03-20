@@ -1,6 +1,6 @@
-(ns ds.heliograph.qdrant.collections
-  (:require [ds.heliograph.qdrant.client :as client]
-            [ds.heliograph.util :as util]
+(ns doomsun.solarium.qdrant.collections
+  (:require [doomsun.solarium.qdrant.client :as client]
+            [doomsun.solarium.util :as util]
             [promesa.core :as p]))
 
 (defn collection-exists? [config collection-name]

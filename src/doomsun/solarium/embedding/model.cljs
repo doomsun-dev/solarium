@@ -1,6 +1,6 @@
-(ns ds.heliograph.embedding.model
+(ns doomsun.solarium.embedding.model
   (:require ["@huggingface/transformers" :refer [pipeline env]]
-            [ds.heliograph.util :as util]
+            [doomsun.solarium.util :as util]
             [promesa.core :as p]))
 
 ;; Disable remote model downloads if already cached

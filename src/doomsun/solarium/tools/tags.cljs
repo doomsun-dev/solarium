@@ -1,5 +1,5 @@
-(ns ds.heliograph.tools.tags
-  (:require [ds.heliograph.qdrant.points :as points]
+(ns doomsun.solarium.tools.tags
+  (:require [doomsun.solarium.qdrant.points :as points]
             [promesa.core :as p]))
 
 (defn list-tags

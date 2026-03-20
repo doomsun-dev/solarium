@@ -1,6 +1,6 @@
-(ns ds.heliograph.qdrant.client-test
+(ns doomsun.solarium.qdrant.client-test
   (:require [cljs.test :refer [deftest is testing async]]
-            [ds.heliograph.qdrant.client :as client]
+            [doomsun.solarium.qdrant.client :as client]
             [promesa.core :as p]))
 
 ;; These tests require a running Qdrant instance.
@@ -9,7 +9,7 @@
 (def test-config
   {:qdrant-url      "http://localhost:6333"
    :qdrant-api-key  nil
-   :collection-name "heliograph_test"})
+   :collection-name "solarium_test"})
 
 (deftest health-check
   (testing "Qdrant health endpoint responds"

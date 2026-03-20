@@ -1,5 +1,5 @@
-(ns ds.heliograph.qdrant.points
-  (:require [ds.heliograph.qdrant.client :as client]
+(ns doomsun.solarium.qdrant.points
+  (:require [doomsun.solarium.qdrant.client :as client]
             [promesa.core :as p]))
 
 (defn upsert!

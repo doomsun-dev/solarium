@@ -1,6 +1,6 @@
-(ns ds.heliograph.chunking-test
+(ns doomsun.solarium.chunking-test
   (:require [cljs.test :refer [deftest is testing]]
-            [ds.heliograph.chunking :as chunking]))
+            [doomsun.solarium.chunking :as chunking]))
 
 (deftest short-text-single-chunk
   (testing "Text shorter than max-chars returns single chunk"

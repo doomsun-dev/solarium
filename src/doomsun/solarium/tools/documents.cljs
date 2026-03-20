@@ -1,9 +1,9 @@
-(ns ds.heliograph.tools.documents
+(ns doomsun.solarium.tools.documents
   (:require [clojure.string :as str]
-            [ds.heliograph.qdrant.points :as points]
-            [ds.heliograph.embedding.pipeline :as embed]
-            [ds.heliograph.chunking :as chunking]
-            [ds.heliograph.util :as util]
+            [doomsun.solarium.qdrant.points :as points]
+            [doomsun.solarium.embedding.pipeline :as embed]
+            [doomsun.solarium.chunking :as chunking]
+            [doomsun.solarium.util :as util]
             [promesa.core :as p]))
 
 (defn store-document!

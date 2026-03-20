@@ -1,4 +1,4 @@
-(ns ds.heliograph.util
+(ns doomsun.solarium.util
   (:require ["crypto" :as crypto]))
 
 (defn gen-uuid []

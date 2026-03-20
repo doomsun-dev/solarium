@@ -1,4 +1,4 @@
-(ns ds.heliograph.qdrant.client
+(ns doomsun.solarium.qdrant.client
   (:require [promesa.core :as p]))
 
 (defn request

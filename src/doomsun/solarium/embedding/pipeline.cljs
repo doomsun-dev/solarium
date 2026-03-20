@@ -1,5 +1,5 @@
-(ns ds.heliograph.embedding.pipeline
-  (:require [ds.heliograph.embedding.model :as model]
+(ns doomsun.solarium.embedding.pipeline
+  (:require [doomsun.solarium.embedding.model :as model]
             [promesa.core :as p]))
 
 (defn- invoke-pipeline
