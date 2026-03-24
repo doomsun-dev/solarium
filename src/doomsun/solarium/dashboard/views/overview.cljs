@@ -41,7 +41,7 @@
     (let [points-count (get info :points_count 0)
           vectors-count (get info :vectors_count 0)
           doc-count    (count (:documents doc-list))]
-      (layout/page {:title "Overview" :active-nav :overview}
+      (layout/page {:title "Overview" :active-nav :overview :config config}
                    [:div {:id "stats" :data-sse-url "/sse/overview"}
                     [:div {:class "stats-grid"}
                      (stat-card "Documents" doc-count)

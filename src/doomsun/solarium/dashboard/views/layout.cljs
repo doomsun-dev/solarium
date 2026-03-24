@@ -1,4 +1,5 @@
-(ns doomsun.solarium.dashboard.views.layout)
+(ns doomsun.solarium.dashboard.views.layout
+  (:require [clojure.string :as str]))
 
 (def ^:private nav-items
   [{:path "/" :label "Overview" :key :overview}
@@ -7,7 +8,22 @@
    {:path "/analytics" :label "Analytics" :key :analytics}
    {:path "/random" :label "Random" :key :random}])
 
-(defn page [{:keys [title active-nav]} & body]
+(defn- qdrant-label
+  "Extract a short display label from the Qdrant URL."
+  [url]
+  (cond
+    (str/includes? url "cloud.qdrant.io")
+    (let [host (second (re-find #"//([^:]+)" url))
+          cluster-id (first (str/split (or host "") #"\."))]
+      (str (subs cluster-id 0 (min 8 (count cluster-id))) "… (cloud)"))
+
+    (str/includes? url "localhost")
+    "localhost"
+
+    :else
+    (second (re-find #"//([^:/]+)" url))))
+
+(defn page [{:keys [title active-nav config]} & body]
   [:html {:lang "en"}
    [:head
     [:meta {:charset "utf-8"}]
@@ -26,7 +42,15 @@
       [:a {:href "/"}
        [:img {:src "/static/logo.svg" :alt "Solarium" :class "sidebar-logo"}]]
       [:h1 "SOLARIUM"]
-      [:div {:class "subtitle"} "Knowledge Base"]]
+      [:div {:class "subtitle"} "Knowledge Base"]
+      (when config
+        [:div {:class "sidebar-meta"}
+         [:div {:class "sidebar-meta-item"}
+          [:span {:class "sidebar-meta-label"} "collection"]
+          [:span {:class "sidebar-meta-value"} (:collection-name config)]]
+         [:div {:class "sidebar-meta-item"}
+          [:span {:class "sidebar-meta-label"} "qdrant"]
+          [:span {:class "sidebar-meta-value"} (qdrant-label (:qdrant-url config))]]])]
      (for [{:keys [path label key]} nav-items]
        [:a {:href path :class (when (= key active-nav) "active")}
         [:span label]])]

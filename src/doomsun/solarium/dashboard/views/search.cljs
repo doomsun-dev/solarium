@@ -20,7 +20,7 @@
   (p/let [results  (when (and query (seq query))
                      (search-tools/search-documents config {:query query :limit 20}))
           tag-data (tags/list-tags config)]
-    (layout/page {:title "Search" :active-nav :search}
+    (layout/page {:title "Search" :active-nav :search :config config}
                  [:h2 "Search"]
                  [:form {:class "search-box" :method "GET" :action "/search"}
                   [:input {:type "text" :name "query" :value (or query "")

@@ -53,7 +53,7 @@
 
 (defn page [config]
   (p/let [fragment (random-doc-fragment config)]
-    (layout/page {:title "Random" :active-nav :random}
+    (layout/page {:title "Random" :active-nav :random :config config}
                  [:div {:style "display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 24px;"}
                   [:h2 {:style "font-family: var(--font-display); font-size: clamp(1.8rem, 3vw, 2.5rem);"} "Random Document"]
                   [:span {:style "font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-ds-text-muted);"} "Refreshes every 10s"]]

@@ -57,7 +57,7 @@
                       :next_offset (:next_page_offset r)})
                    (docs/list-documents config {:limit 50 :offset offset}))
           tag-data (tags/list-tags config)]
-    (layout/page {:title "Documents" :active-nav :documents}
+    (layout/page {:title "Documents" :active-nav :documents :config config}
                  [:h2 (if tag (str "Documents tagged: " tag) "All Documents")]
                  (when tag
                    [:p [:a {:href "/documents"} "Clear filter"]])
@@ -98,7 +98,7 @@
                                 :chunk_index (get-in pt [:payload :chunk_index])})
                              pts)
             full-content (deduplicate-chunks (map :content chunks))]
-        (layout/page {:title (:title meta) :active-nav :documents}
+        (layout/page {:title (:title meta) :active-nav :documents :config config}
                      [:div {:style "margin-bottom: 16px;"}
                       [:a {:href "/documents"} "Back to Documents"]]
                      [:h2 (or (:title meta) "Untitled")]

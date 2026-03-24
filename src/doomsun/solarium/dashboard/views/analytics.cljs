@@ -32,7 +32,7 @@
           chunk-sizes (->> all-points
                            (map #(count (get-in % [:payload :content] "")))
                            (mapv (fn [s] {:size s})))]
-      (layout/page {:title "Analytics" :active-nav :analytics}
+      (layout/page {:title "Analytics" :active-nav :analytics :config config}
                    [:script {:src "https://cdn.jsdelivr.net/npm/vega@5"}]
                    [:script {:src "https://cdn.jsdelivr.net/npm/vega-lite@5"}]
                    [:script {:src "https://cdn.jsdelivr.net/npm/vega-embed@6"}]
