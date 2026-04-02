@@ -15,14 +15,14 @@ Solarium runs as a local MCP server process — embeddings are computed on your 
 - Node.js 20+
 - npm
 
-### 1. Install dependencies
+### Install dependencies
 
 ```bash
 cd solarium
 npm install
 ```
 
-### 1. Build and link
+### Build and link
 
 ```bash
 npm run build
@@ -31,13 +31,13 @@ npm link
 
 This builds the server and creates a global `solarium` command on your PATH.
 
-### 1. Run the solarium binary
+### Run the solarium binary
 
 ```bash
 solarium
 ```
 
-### 1. Pre-download the embedding model (optional but recommended)
+### Pre-download the embedding model (optional but recommended)
 
 The model (~130MB) is downloaded automatically on first use, but you can cache it ahead of time:
 
@@ -45,7 +45,7 @@ The model (~130MB) is downloaded automatically on first use, but you can cache i
 ./bin/download-model.sh
 ```
 
-### 1. Configure your Qdrant instance
+### Configure your Qdrant instance
 
 Set your Qdrant API key in your shell profile (`~/.zshrc` or `~/.bashrc`):
 
@@ -56,7 +56,7 @@ export QDRANT_API_KEY=<your-qdrant-api-key>
 
 Then reload your shell: `source ~/.zshrc`
 
-### 1. Add to your Claude Code MCP config
+### dd to your Claude Code MCP config
 
 Add the following to `.mcp.json` in any repo where you want Solarium available:
 
@@ -75,7 +75,7 @@ Add the following to `.mcp.json` in any repo where you want Solarium available:
 
 `QDRANT_API_KEY` is read from your shell environment automatically.
 
-### 1. Verify
+### Verify
 
 In Claude Code, run `/mcp` to confirm Solarium is connected, then try:
 
