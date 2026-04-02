@@ -56,7 +56,7 @@ export QDRANT_API_KEY=<your-qdrant-api-key>
 
 Then reload your shell: `source ~/.zshrc`
 
-### dd to your Claude Code MCP config
+### Add to your Claude Code MCP config
 
 Add the following to `.mcp.json` in any repo where you want Solarium available:
 
