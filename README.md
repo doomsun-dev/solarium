@@ -22,7 +22,7 @@ cd solarium
 npm install
 ```
 
-### 2. Build and link
+### 1. Build and link
 
 ```bash
 npm run build
